@@ -192,12 +192,8 @@
             }
         }
 
-        if (FORCE_LOAD) {
-            if (results.local) {
-                window.location.href = SERVERS.local;
-            } else if (results.external) {
-                window.location.href = SERVERS.external;
-            }
+        if (FORCE_LOAD && result) {
+	        window.location.href = SERVERS[result];
         }
     }
     </script>
