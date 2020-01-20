@@ -192,16 +192,13 @@
             }
         }
 
-        setTimeout(function () {
-	        FORCE_LOAD = true;
-	        if (FORCE_LOAD) {
-		        if (results.local) {
-		            window.location.href = SERVERS.local;
-		        } else if (results.external) {
-		            window.location.href = SERVERS.external;
-		        }
-	        }
-        }, 5000);
+        if (FORCE_LOAD) {
+            if (results.local) {
+                window.location.href = SERVERS.local;
+            } else if (results.external) {
+                window.location.href = SERVERS.external;
+            }
+        }
     }
     </script>
 </body>
