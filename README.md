@@ -1,6 +1,13 @@
-# Cordova Browser-Sync Plugin - 24-11-2019
+# Cordova Browser-Sync Plugin
 
-This is a fork of original Cordova Browser-Sync Plugin 1.1.0, developed by nparashuram.
+![Version](https://img.shields.io/badge/version-1.2.0-yellow)
+![Last update](https://img.shields.io/badge/last%20update-21.01.2020-lightgrey)
+![Platform](https://img.shields.io/badge/platform-android-green)
+![Platform](https://img.shields.io/badge/platform-ios-green)
+![Platform](https://img.shields.io/badge/platform-windows-green)
+![Platform](https://img.shields.io/badge/platform-browser-green)
+
+This is a fork of original Cordova Browser-Sync Plugin 1.1.7, developed by DimitrisRK.
 The purpose of this fork is to become compatible with latest version of Apache Cordova.
 
 Integrating [BrowserSync](http://browsersync.io) into your Cordova workflow.
@@ -22,11 +29,7 @@ The presence of this `--live-reload` flag triggers the live reload workflow. Wit
 The simplest way to integrate this in your Cordova workflow is to add it as a plugin
 
 ```
-cordova plugin add cordova-plugin-browsersync-gen2
-```
-or
-```
-cordova plugin add https://github.com/DimitrisRK/cordova-plugin-browsersync-gen2.git
+cordova plugin add https://github.com/AntonovSergey2211/cordova-plugin-browsersync.git
 ```
 
 and then run the cordova command with `--live-reload`. Samples:
@@ -38,7 +41,6 @@ cordova run windows --live-reload
 cordova run --live-reload (will run project using all platforms)
 ```
 
-## *NEW*
 From now on, plugin supports --live-reload with `cordova serve` command.
 ```
 cordova serve --live-reload
