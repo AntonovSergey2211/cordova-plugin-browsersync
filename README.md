@@ -91,3 +91,11 @@ You can use `--https` for example.
 ```
 cordova run --live-reload --https
 ```
+
+### Force loading
+If you need to open first successful server result you can enable it with this option.
+You can use `--force-load` for example.
+
+```
+cordova run --live-reload --force-load
+```
