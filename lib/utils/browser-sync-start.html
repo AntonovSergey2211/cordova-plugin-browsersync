@@ -130,8 +130,8 @@
     </div>
     <script type="text/javascript">
     var SERVERS = __SERVERS__;
-    var IS_WINDOWS = __IS_WINDOWS__;
     var FORCE_LOAD = __FORCE_LOAD__;
+    var USE_IFRAME = __USE_IFRAME__;
 
     var tmpl = document.getElementById('server-tmpl').innerHTML;
     var html = [];
@@ -202,12 +202,12 @@
         }
 
         if (FORCE_LOAD && result) {
-	        window.location.href = SERVERS[result];
+	        openURL(SERVERS[result]);
         }
     }
 
     function openURL(url) {
-	    if (IS_WINDOWS) {
+	    if (USE_IFRAME) {
             var iframe = document.createElement('iframe');
             iframe.style.position = 'absolute';
             iframe.style.top = 0;
