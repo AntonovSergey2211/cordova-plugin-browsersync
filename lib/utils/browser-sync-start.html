@@ -19,7 +19,7 @@
             -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg)
         }
     }
-    
+
     @keyframes sk-rotateplane {
         0% {
             transform: perspective(120px) rotateX(0deg) rotateY(0deg);
@@ -34,7 +34,7 @@
             -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
         }
     }
-    
+
     body {
         background-color: #2C3E50;
         font: 14px/1.5em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
@@ -43,7 +43,7 @@
         color: #fff;
         position: relative;
     }
-    
+
     .spinner {
         width: 40px;
         height: 40px;
@@ -52,7 +52,7 @@
         -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
         animation: sk-rotateplane 1.2s infinite ease-in-out;
     }
-    
+
     #skip
     {
         margin: 3em;
@@ -63,7 +63,7 @@
         color: #fff;
         font-size: 2em;
     }
-    
+
     .connection {
         color: #fff;
         margin: 2em auto;
@@ -72,13 +72,14 @@
         width: 80%;
         text-align: left;
         display: block;
+        cursor: pointer;
     }
-    
+
     .connection b {
         font-size: 1.3em;
         text-transform: uppercase;
     }
-    
+
     .connection .status {
         float: right;
         font-size: 4em;
@@ -86,18 +87,18 @@
         line-height: 0.8em;
         text-align: right;
     }
-    
+
     .connection .details {
         float: left;
         width: 80%;
     }
-    
+
     .connection .details .value {
         width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
     }
-    
+
     .connection:after {
         content: "";
         clear: both;
@@ -113,15 +114,15 @@
         <div id="servers">
             ... Locating servers ...
         </div>
-        <div id="server-tmpl" style="display:none">
-            <a class="connection" href="__VALUE__">
+        <div id="server-tmpl" style="display:none" onclick="alert(123);">
+            <div class="connection" id="panel-__KEY__">
                 <div class="details"><b>__KEY__</b>
                     <div class="value">__VALUE__</div>
                 </div>
                 <div class="status">
                     <span id="value-__KEY__">&#x231B;</span>
                 </div>
-            </a>
+            </div>
         </div>
     </div>
     <div id="skip">
@@ -129,6 +130,7 @@
     </div>
     <script type="text/javascript">
     var SERVERS = __SERVERS__;
+    var IS_WINDOWS = __IS_WINDOWS__;
 
     var tmpl = document.getElementById('server-tmpl').innerHTML;
     var html = [];
@@ -148,6 +150,7 @@
         resultCount++;
         checkConnection(key);
     }
+    console.log(html);
     document.getElementById('servers').innerHTML = html.join('');
 
     var results = {};
@@ -160,7 +163,13 @@
             {
                 status = false;
             }
+
             document.getElementById('value-' + type).innerHTML = status ? ' &#x2713;' : '&#x274C;';
+
+	        document.getElementById('panel-' + type).onclick = function() {
+	        	openURL(SERVERS[type]);
+            };
+
             results[type] = status;
             resultCount--;
             if (resultCount <= 0)
@@ -189,6 +198,25 @@
                 result = resultOrder[i];
                 break;
             }
+        }
+    }
+
+    function openURL(url) {
+	    if (IS_WINDOWS) {
+            var iframe = document.createElement('iframe');
+            iframe.style.position = 'absolute';
+            iframe.style.top = 0;
+            iframe.style.left = 0;
+            iframe.style.width = window.innerWidth + 'px';
+            iframe.style.height = window.innerHeight + 'px';
+            iframe.style.backgroundColor = 'white';
+            iframe.style.border = 'none';
+		    iframe.src = url;
+		    document.body.style.margin = 0;
+		    document.body.style.padding = 0;
+            document.body.appendChild(iframe);
+        } else {
+	    	window.location.href = url;
         }
     }
     </script>
