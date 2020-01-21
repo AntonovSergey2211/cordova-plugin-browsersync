@@ -11,14 +11,16 @@
         "platforms": [
             "android",
             "browser",
-            "ios"
+            "ios",
+            "windows"
         ]
     },
     "keywords": [
         "cordova",
         "ecosystem:cordova",
         "cordova-android",
-        "cordova-ios"
+        "cordova-ios",
+        "cordova-windows"
     ],
     "repository": {
         "type": "git",

@@ -34,6 +34,7 @@ and then run the cordova command with `--live-reload`. Samples:
 cordova run browser --live-reload
 cordova run android --live-reload
 cordova run ios --live-reload
+cordova run windows --live-reload
 cordova run --live-reload (will run project using all platforms)
 ```
 

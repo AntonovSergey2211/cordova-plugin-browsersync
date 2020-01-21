@@ -72,6 +72,7 @@
         width: 80%;
         text-align: left;
         display: block;
+        cursor: pointer;
     }
 
     .connection b {
@@ -114,14 +115,14 @@
             ... Locating servers ...
         </div>
         <div id="server-tmpl" style="display:none">
-            <a class="connection" href="__VALUE__">
+            <div class="connection" id="panel-__KEY__">
                 <div class="details"><b>__KEY__</b>
                     <div class="value">__VALUE__</div>
                 </div>
                 <div class="status">
                     <span id="value-__KEY__">&#x231B;</span>
                 </div>
-            </a>
+            </div>
         </div>
     </div>
     <div id="skip">
@@ -130,6 +131,7 @@
     <script type="text/javascript">
     var SERVERS = __SERVERS__;
     var FORCE_LOAD = __FORCE_LOAD__;
+    var USE_IFRAME = __USE_IFRAME__;
 
     var tmpl = document.getElementById('server-tmpl').innerHTML;
     var html = [];
@@ -149,6 +151,7 @@
         resultCount++;
         checkConnection(key);
     }
+    console.log(html);
     document.getElementById('servers').innerHTML = html.join('');
 
     var results = {};
@@ -161,7 +164,13 @@
             {
                 status = false;
             }
+
             document.getElementById('value-' + type).innerHTML = status ? ' &#x2713;' : '&#x274C;';
+
+	        document.getElementById('panel-' + type).onclick = function() {
+	        	openURL(SERVERS[type]);
+            };
+
             results[type] = status;
             resultCount--;
             if (resultCount <= 0)
@@ -193,7 +202,38 @@
         }
 
         if (FORCE_LOAD && result) {
-	        window.location.href = SERVERS[result];
+	        openURL(SERVERS[result]);
+        }
+    }
+
+    function openURL(url) {
+	    if (USE_IFRAME) {
+            var iframe = document.createElement('iframe');
+            iframe.style.position = 'absolute';
+            iframe.style.top = 0;
+            iframe.style.left = 0;
+            iframe.style.backgroundColor = 'white';
+            iframe.style.border = 'none';
+		    iframe.src = url;
+
+		    var body = document.body;
+            while (body.firstChild) {
+                body.removeChild(body.firstChild);
+            }
+		    body.style.margin = 0;
+		    body.style.padding = 0;
+            body.appendChild(iframe);
+
+            function onresize() {
+                iframe.style.width = window.innerWidth + 'px';
+                iframe.style.height = window.innerHeight + 'px';
+            }
+
+            window.onresize = onresize;
+
+            onresize();
+        } else {
+	    	window.location.href = url;
         }
     }
     </script>
