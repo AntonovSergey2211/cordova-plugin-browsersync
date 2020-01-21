@@ -131,6 +131,7 @@
     <script type="text/javascript">
     var SERVERS = __SERVERS__;
     var IS_WINDOWS = __IS_WINDOWS__;
+    var FORCE_LOAD = __FORCE_LOAD__;
 
     var tmpl = document.getElementById('server-tmpl').innerHTML;
     var html = [];
@@ -198,6 +199,10 @@
                 result = resultOrder[i];
                 break;
             }
+        }
+
+        if (FORCE_LOAD && result) {
+	        window.location.href = SERVERS[result];
         }
     }
 
