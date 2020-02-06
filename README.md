@@ -6,6 +6,7 @@
 ![Platform](https://img.shields.io/badge/platform-ios-green)
 ![Platform](https://img.shields.io/badge/platform-windows-green)
 ![Platform](https://img.shields.io/badge/platform-browser-green)
+![Platform](https://img.shields.io/badge/platform-electron-green)
 
 This is a fork of original Cordova Browser-Sync Plugin 1.1.7, developed by DimitrisRK.
 The purpose of this fork is to become compatible with latest version of Apache Cordova.
@@ -38,6 +39,7 @@ cordova run browser --live-reload
 cordova run android --live-reload
 cordova run ios --live-reload
 cordova run windows --live-reload
+cordova run electron --live-reload
 cordova run --live-reload (will run project using all platforms)
 ```
 

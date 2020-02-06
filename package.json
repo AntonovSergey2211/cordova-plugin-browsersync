@@ -12,7 +12,8 @@
             "android",
             "browser",
             "ios",
-            "windows"
+            "windows",
+            "electron"
         ]
     },
     "keywords": [
@@ -20,7 +21,8 @@
         "ecosystem:cordova",
         "cordova-android",
         "cordova-ios",
-        "cordova-windows"
+        "cordova-windows",
+        "cordova-electron"
     ],
     "repository": {
         "type": "git",
