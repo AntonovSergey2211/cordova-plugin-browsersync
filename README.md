@@ -1,7 +1,7 @@
 # Cordova Browser-Sync Plugin
 
 ![Version](https://img.shields.io/badge/version-1.3.0-yellow)
-![Last update](https://img.shields.io/badge/last%20update-06.02.2020-green)
+![Last update](https://img.shields.io/badge/last%20update-06.02.2020-blue)
 ![Platform](https://img.shields.io/badge/platform-android-green)
 ![Platform](https://img.shields.io/badge/platform-ios-green)
 ![Platform](https://img.shields.io/badge/platform-windows-green)
